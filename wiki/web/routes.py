@@ -123,9 +123,8 @@ def tag(name):
 def search():
     form = SearchForm()
     if form.validate_on_submit():
-        results = current_wiki.search(form.term.data, form.ignore_case.data)
-        return render_template('search.html', form=form,
-                               results=results, search=form.term.data)
+        results = current_wiki.search(form.term.data, form.ignore_case.data, form.title_only.data, form.tags_only.data, form.body_only.data)
+        return render_template('search.html', form=form,results=results, search=form.term.data)
     return render_template('search.html', form=form, search=None)
 
 

@@ -32,6 +32,11 @@ class SearchForm(Form):
         description='Ignore Case',
         # FIXME: default is not correctly populated
         default=True)
+    title_only = BooleanField(description='Titles only', default=False)
+    tags_only = BooleanField(description='Tags only', default=False)
+    body_only = BooleanField(description='Body only', default =False)
+
+
 
 
 class EditorForm(Form):
