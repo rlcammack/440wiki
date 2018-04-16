@@ -365,13 +365,32 @@ class Wiki(object):
                 tagged.append(page)
         return sorted(tagged, key=lambda x: x.title.lower())
 
-    def search(self, term, ignore_case=True, attrs=['title', 'tags', 'body']):
+    def search(self, term, ignore_case = False, title_only = False, tags_only = False, body_only = False, attrs=['title', 'tags', 'body']):
+
         pages = self.index()
         regex = re.compile(term, re.IGNORECASE if ignore_case else 0)
         matched = []
-        for page in pages:
-            for attr in attrs:
-                if regex.search(getattr(page, attr)):
-                    matched.append(page)
-                    break
+        print Wiki.get_tags(self)
+        if title_only:
+                for page in pages:
+                    if regex.search(getattr(page, 'title')):
+                        matched.append(page)
+
+        elif tags_only:
+                for page in pages:
+                    if regex.search(getattr(page, 'tags')):
+                        matched.append(page)
+
+        elif body_only:
+                for page in pages:
+                    if regex.search(getattr(page, 'body')):
+                        matched.append(page)
+
+        else:
+            matched.append("asssssss")
+            for page in pages:
+                for attr in attrs:
+                    if regex.search(getattr(page, attr)):
+                        matched.append(page)
+                        break
         return matched
