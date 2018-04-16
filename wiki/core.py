@@ -387,7 +387,6 @@ class Wiki(object):
                         matched.append(page)
 
         else:
-            matched.append("asssssss")
             for page in pages:
                 for attr in attrs:
                     if regex.search(getattr(page, attr)):
