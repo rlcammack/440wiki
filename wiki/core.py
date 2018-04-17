@@ -372,19 +372,19 @@ class Wiki(object):
         matched = []
         print Wiki.get_tags(self)
         if title_only:
-                for page in pages:
-                    if regex.search(getattr(page, 'title')):
-                        matched.append(page)
+            for page in pages:
+                if regex.search(getattr(page, 'title')):
+                    matched.append(page)
 
         elif tags_only:
-                for page in pages:
-                    if regex.search(getattr(page, 'tags')):
-                        matched.append(page)
+            for page in pages:
+                if regex.search(getattr(page, 'tags')):
+                    matched.append(page)
 
         elif body_only:
-                for page in pages:
-                    if regex.search(getattr(page, 'body')):
-                        matched.append(page)
+            for page in pages:
+                if regex.search(getattr(page, 'body')):
+                    matched.append(page)
 
         else:
             for page in pages:
